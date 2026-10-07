@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Cloudflare preferred IP tester and state manager.
-# Author: 0157Martin (https://github.com/0157Martin)
+# Author: Martin&林知远 (https://github.com/0157Martin)
 # SPDX-License-Identifier: GPL-3.0-or-later
 set -Eeuo pipefail
 
-readonly VERSION="1.0.0"
+readonly VERSION="1.0.1"
+readonly AUTHOR="Martin&林知远"
 readonly STATE_DIR="${CFIP_STATE_DIR:-/etc/cloudflare-ip-manager}"
 readonly STATE_FILE="$STATE_DIR/selected.env"
 
@@ -102,7 +103,7 @@ verify_selection() {
 
 usage() {
   cat <<'EOF'
-cloudflare-ip-manager 1.0.0 by 0157Martin
+cloudflare-ip-manager 1.0.1 by Martin&林知远
   install                         检查依赖并初始化
   test <域名> <IP,IP,...>         测试候选并保存最低 TTFB 地址
   set <IP> <域名>                 手动保存入口 IP 和 TLS 域名
@@ -127,7 +128,7 @@ main() {
     domain) load_selection; printf '%s\n' "$CFIP_DOMAIN" ;;
     clear) require_root; rm -f -- "$STATE_FILE"; green '已清除优选 IP。' ;;
     uninstall) require_root; rm -rf -- "$STATE_DIR"; rm -f -- /usr/local/bin/cloudflare-ip-manager; green '已卸载 cloudflare-ip-manager。' ;;
-    version|-v|--version) printf 'cloudflare-ip-manager %s by 0157Martin\n' "$VERSION" ;;
+    version|-v|--version) printf 'cloudflare-ip-manager %s by %s\n' "$VERSION" "$AUTHOR" ;;
     help|-h|--help) usage ;;
     *) die "未知命令：$command" ;;
   esac

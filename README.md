@@ -1,6 +1,6 @@
 # cloudflare-ip-manager
 
-Cloudflare 优选入口 IP 的独立测试和状态项目，由 **0157Martin** 维护。它不修改 DNS、Caddy 或 Xray；`v2ray-manager` 只调用它，并在导出 TLS XHTTP/WebSocket 链接时把保存的 IP 用作连接地址。TLS 的 SNI 和 HTTP Host 始终保留原域名。
+Cloudflare 优选入口 IP 的独立测试和状态项目，由 **Martin&林知远** 维护。它不修改 DNS、Caddy 或 Xray；`v2ray-manager` 只调用它，并在导出 TLS XHTTP/WebSocket 链接时把保存的 IP 用作连接地址。TLS 的 SNI 和 HTTP Host 始终保留原域名。
 
 ## 安装、验证与卸载
 

@@ -15,6 +15,6 @@ case "${1:-install}" in
     "$BIN" install
     ;;
   verify) [[ -x $BIN ]] || { echo '未安装。' >&2; exit 1; }; "$BIN" version; "$BIN" help >/dev/null; [[ ! -e /etc/cloudflare-ip-manager/selected.env ]] || "$BIN" verify ;;
-  uninstall) [[ -x $BIN ]] && "$BIN" uninstall || rm -rf /etc/cloudflare-ip-manager ;;
+  uninstall) if [[ -x $BIN ]]; then "$BIN" uninstall; else rm -rf /etc/cloudflare-ip-manager; fi ;;
   *) echo '用法：install.sh [install|verify|uninstall]' >&2; exit 1 ;;
 esac

@@ -1,0 +1,12 @@
+name: verify
+on:
+  push:
+  pull_request:
+jobs:
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash -n cloudflare-ip-manager.sh install.sh tests/unit.sh
+      - run: shellcheck cloudflare-ip-manager.sh install.sh tests/unit.sh
+      - run: bash tests/unit.sh
